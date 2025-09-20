@@ -47,8 +47,9 @@ body::before {
 /* === HEADER LOGO === */
 .logoHeader img {
   content: url("https://asphalt23.github.io/Movies/home_theater_logo.png") !important;
-  height: 50px !important;
+  height: 85px !important;  /* bigger logo */
   object-fit: contain;
+  margin-left: 10px !important;
 }
 
 /* === NAVIGATION BAR === */
@@ -56,8 +57,29 @@ body::before {
   background: #0a0b0f !important;
 }
 .navMenuOption:hover {
-  background: rgba(255, 215, 0, 0.15) !important; /* gold glow */
+  background: rgba(255, 215, 0, 0.15) !important;
   border-left: 3px solid #FFD700 !important;
+}
+
+/* === SECTION TITLES === */
+.sectionTitle {
+  font-size: 1.6em !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 8px 16px;
+  margin: 12px 0 !important;
+  border-left: 5px solid #FFD700;
+  color: #FFD700 !important;
+  background: linear-gradient(to right, rgba(91,138,255,0.15), rgba(124,248,210,0.15));
+  border-radius: 8px;
+  display: inline-block;
+  box-shadow: 0 0 12px rgba(255,215,0,0.3);
+}
+.sectionTitle:hover {
+  filter: brightness(1.2);
+  transform: translateX(4px);
+  transition: all 0.3s ease;
 }
 
 /* === MOVIE POSTERS === */
@@ -110,7 +132,7 @@ body::before {
   background: #222 !important;
 }
 .mediaPlayer .sliderContainer .slider {
-  background: #FFD700 !important; /* gold progress bar */
+  background: #FFD700 !important;
 }
 .mediaPlayer .osdTitle {
   color: #FFD700 !important;
@@ -125,4 +147,96 @@ body::before {
   padding: 4px 8px;
   font-size: 0.9em;
   box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* === MOVIE INFO PAGE === */
+.detailPagePrimaryContainer {
+  position: relative;
+  background: rgba(0, 0, 0, 0.85) !important;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.15);
+  animation: fadeIn 1.2s ease;
+}
+
+/* Netflix-style backdrop */
+.detailPagePrimaryContainer::before {
+  content: "";
+  position: absolute;
+  top: -40px; left: -40px; right: -40px; bottom: -40px;
+  background: inherit;
+  background-image: var(--backdropImage, none);
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(0.4);
+  z-index: -1;
+  border-radius: 20px;
+}
+
+/* Title */
+.detailPagePrimaryContainer .itemName {
+  font-size: 2.2em !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #FFD700 !important;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+
+/* Metadata */
+.detailPagePrimaryContainer .itemMiscInfo {
+  font-size: 1.1em !important;
+  color: #7cf8d2 !important;
+  margin-bottom: 10px;
+}
+
+/* Description */
+.detailPagePrimaryContainer .overview {
+  font-size: 1.05em;
+  line-height: 1.6em;
+  margin: 16px 0;
+  color: #e9eef8 !important;
+}
+
+/* Action buttons */
+.detailPagePrimaryContainer .detailButtons .button-flat,
+.detailPagePrimaryContainer .detailButtons .button-raised {
+  background: linear-gradient(145deg, #5b8aff, #7cf8d2) !important;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 12px 18px;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+.detailPagePrimaryContainer .detailButtons .button-flat:hover,
+.detailPagePrimaryContainer .detailButtons .button-raised:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+/* Tags / Genres */
+.detailPagePrimaryContainer .tag {
+  background: rgba(255, 215, 0, 0.15) !important;
+  border: 1px solid #FFD700 !important;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.9em;
+  color: #FFD700 !important;
+  margin: 2px;
+}
+
+/* Cast */
+.detailPageSecondaryContainer .card {
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(91,138,255,0.3);
+  transition: all 0.3s ease;
+}
+.detailPageSecondaryContainer .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 22px rgba(124,248,210,0.5);
+}
+.detailPageSecondaryContainer .card .cardBox {
+  background: #0a0b0f !important;
 }
