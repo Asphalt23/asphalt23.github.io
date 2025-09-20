@@ -1,1 +1,43 @@
-t
+/* === Jellyfin Cinematic Home Theater Branding === */
+
+/* Header + navigation logo */
+.logoHeader img,
+.pageTitleWithLogo img,
+.pageTitleWithDefaultLogo img,
+div[aria-label="Jellyfin Logo"] img {
+    content: url("home_theater_logo.png") !important; /* Local path, see below */
+    height: 60px !important;
+    width: auto !important;
+    object-fit: contain;
+}
+
+/* Hide default SVGs so no overlap */
+.logoHeader svg,
+.pageTitleWithLogo svg,
+.pageTitleWithDefaultLogo svg {
+    display: none !important;
+}
+
+/* Login page logo */
+#loginPage .pageTitleWithLogo img,
+#loginPage .pageTitleWithDefaultLogo img {
+    content: url("home_theater_logo.png") !important;
+    height: 80px !important;
+    object-fit: contain;
+}
+
+/* Cinematic login background */
+#loginPage {
+    background: url("cinematic_bg.png") no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+
+/* Dark overlay for readability */
+.loginPage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: -1;
+}
+
