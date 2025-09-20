@@ -1,8 +1,8 @@
 /* === HEADER LOGO === */
 .pageTitleWithDefaultLogo img,
 .layout-desktop .pageTitleWithLogo img {
-  height: 45px !important;   /* increase size */
-  max-height: 150px !important;
+  height: 95px !important;   /* increase size */
+  max-height: 95px !important;
   width: auto !important;
   margin-right: 12px !important;
   object-fit: contain !important;
