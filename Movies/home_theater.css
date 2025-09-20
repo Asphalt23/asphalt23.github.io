@@ -1,16 +1,16 @@
 /* === HEADER LOGO === */
 .pageTitleWithDefaultLogo img,
 .layout-desktop .pageTitleWithLogo img {
-  height: 95px !important;   /* increase size */
-  max-height: 95px !important;
-  width: auto !important;
-  margin-right: 12px !important;
+  width: 160px !important;    /* fixed width */
+  height: 40px !important;    /* fixed height */
   object-fit: contain !important;
+  margin-right: 12px !important;
+  display: block;
 }
 
 .skinHeader {
   display: flex;
-  align-items: center !important; /* vertically centers logo */
+  align-items: center !important; /* vertically center logo with icons */
 }
 
 /* === LOGIN PAGE CINEMATIC BACKGROUND === */
