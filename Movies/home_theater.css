@@ -1,43 +1,128 @@
-/* === Jellyfin Cinematic Home Theater Branding === */
-
-/* Header + navigation logo */
-.logoHeader img,
-.pageTitleWithLogo img,
-.pageTitleWithDefaultLogo img,
-div[aria-label="Jellyfin Logo"] img {
-    content: url("home_theater_logo.png") !important; /* Local path, see below */
-    height: 60px !important;
-    width: auto !important;
-    object-fit: contain;
+/* === GLOBAL BACKGROUND === */
+body, .backgroundContainer, .pageContainer {
+  background: #000 !important; /* true black */
+  color: #e9eef8 !important;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  letter-spacing: 0.5px;
 }
 
-/* Hide default SVGs so no overlap */
-.logoHeader svg,
-.pageTitleWithLogo svg,
-.pageTitleWithDefaultLogo svg {
-    display: none !important;
+/* === ANIMATED BACKGROUND GRADIENT === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top left, #111 0%, #000 50%),
+              radial-gradient(circle at bottom right, #0a0b0f 0%, #000 50%);
+  background-size: 200% 200%;
+  animation: gradientShift 25s ease infinite;
+  z-index: -1;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Login page logo */
-#loginPage .pageTitleWithLogo img,
-#loginPage .pageTitleWithDefaultLogo img {
-    content: url("home_theater_logo.png") !important;
-    height: 80px !important;
-    object-fit: contain;
+/* === LOGIN PAGE === */
+.loginPage {
+  background: url("https://asphalt23.github.io/Movies/login_bg.jpg") center/cover no-repeat !important;
+  animation: fadeIn 2s ease;
+}
+.loginPage .pageTitleWithLogo img,
+.pageTitleWithDefaultLogo img {
+  content: url("https://asphalt23.github.io/Movies/home_theater_logo.png") !important;
+  height: 90px !important;
+  object-fit: contain;
+  animation: logoPop 1.2s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes logoPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* Cinematic login background */
-#loginPage {
-    background: url("cinematic_bg.png") no-repeat center center fixed !important;
-    background-size: cover !important;
+/* === HEADER LOGO === */
+.logoHeader img {
+  content: url("https://asphalt23.github.io/Movies/home_theater_logo.png") !important;
+  height: 50px !important;
+  object-fit: contain;
 }
 
-/* Dark overlay for readability */
-.loginPage::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: -1;
+/* === NAVIGATION BAR === */
+.mainDrawer, .navMenuOption {
+  background: #0a0b0f !important;
+}
+.navMenuOption:hover {
+  background: rgba(255, 215, 0, 0.15) !important; /* gold glow */
+  border-left: 3px solid #FFD700 !important;
 }
 
+/* === MOVIE POSTERS === */
+.itemPosterCard {
+  border-radius: 16px !important;
+  box-shadow: 0 0 12px rgba(124, 248, 210, 0.25) !important;
+  transition: all 0.3s ease;
+}
+.itemPosterCard:hover {
+  box-shadow: 0 0 28px rgba(124, 248, 210, 0.6) !important;
+  transform: scale(1.05);
+}
+
+/* === BUTTONS === */
+.button-flat, .button-raised {
+  background: linear-gradient(145deg, #5b8aff, #7cf8d2) !important;
+  border: none !important;
+  color: #000 !important;
+  border-radius: 8px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.button-flat:hover, .button-raised:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+/* === CUSTOM LOADING SPINNER === */
+.loader {
+  border: 6px solid rgba(255,255,255,0.1);
+  border-top: 6px solid #FFD700;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1.2s linear infinite;
+  margin: auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === VIDEO PLAYER === */
+.videoOsdBottom {
+  background: rgba(0,0,0,0.75) !important;
+  border-top: 2px solid #5b8aff !important;
+}
+.mediaPlayer .sliderContainer {
+  background: #222 !important;
+}
+.mediaPlayer .sliderContainer .slider {
+  background: #FFD700 !important; /* gold progress bar */
+}
+.mediaPlayer .osdTitle {
+  color: #FFD700 !important;
+  text-shadow: 0 0 6px #000;
+}
+
+/* === TOOLTIPS === */
+.tooltip {
+  background: #0a0b0f !important;
+  color: #FFD700 !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.9em;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
