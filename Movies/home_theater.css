@@ -1,146 +1,393 @@
-/* === GLOBAL GOLDEN THEME === */
-:root {
-  --gold-light: #FFD700;
-  --gold-mid: #d4af37;
-  --gold-dark: #a67c00;
-  --bg-dark: #000;
+/* ==== Import font ==== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+/* Force background across the whole app */
+/* Background image */
+/* Apply non-repeating cinematic background everywhere */
+html, body,
+.skinBody,
+.backgroundContainer,
+.page,
+.view,
+.pageContainer {
+    background: url('cinematic_bg.png') center center / cover no-repeat fixed !important;
+    background-color: #000 !important; /* fallback */
 }
 
-/* === BACKGROUND === */
-html, body, .backgroundContainer, .pageContainer {
-  background: var(--bg-dark) !important;
-  color: var(--gold-light) !important;
-  font-family: "Cinzel", "Georgia", serif; /* cinematic serif look */
+/* Prevent child containers from drawing over the image */
+.page, .view, .pageContainer {
+    background: transparent !important;
 }
 
-/* === GOLDEN BUTTONS === */
-.button-flat, .button-raised, 
-#loginPage .raised, #loginPage .flat {
-  background: linear-gradient(180deg, var(--gold-light), var(--gold-mid), var(--gold-dark)) !important;
-  color: #000 !important;
-  border: 1px solid var(--gold-dark) !important;
-  border-radius: 8px !important;
-  font-weight: 700 !important;
-  font-family: "Cinzel", serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 12px 20px !important;
-  box-shadow: 
-    inset 0 2px 4px rgba(255,255,255,0.4),
-    0 4px 12px rgba(0,0,0,0.6),
-    0 0 12px rgba(255,215,0,0.4);
-  transition: all 0.25s ease;
-}
-.button-flat:hover, .button-raised:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.5),
-    0 6px 14px rgba(0,0,0,0.7),
-    0 0 18px rgba(255,215,0,0.6);
+
+
+/* Blur overlay */
+.skinBody::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    backdrop-filter: blur(20px); /* <-- main blur effect */
+    -webkit-backdrop-filter: blur(20px); /* Safari support */
+    background: rgba(0, 0, 0, 0); /* optional darken overlay */
+    z-index: -1; /* keep it behind all content */
 }
 
-/* === SECTION TITLES === */
-.sectionTitle,
-.sectionTitleText,
-.sectionTitleTextButton,
-.homeSection h2 {
-  font-family: "Cinzel", serif;
-  font-size: 1.6em !important;
-  font-weight: 800;
-  color: var(--gold-light) !important;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border: 1px solid var(--gold-dark);
-  border-radius: 6px;
-  background: rgba(0,0,0,0.6);
-  box-shadow: 0 0 12px rgba(255,215,0,0.3);
-  text-shadow: 
-    1px 1px 2px #000,
-    0 0 8px rgba(255,215,0,0.6);
+
+
+/* ==== Global ==== */
+body, html {
+    font-family: 'Cinzel', serif !important;
+    color: #e0e0e0 !important;
 }
 
-/* === LOGIN PAGE === */
+/* ==== Sidebar ==== */
+.mainDrawer {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(20px);
+}
+.navMenuOption {
+    color: #d4af37 !important;
+    border-radius: 8px;
+    margin: 4px 8px;
+    padding: 8px;
+    transition: background 0.3s;
+}
+.navMenuOption:hover {
+    background: rgba(212,175,55,0.15);
+}
+.sidebarHeader {
+    color: #ffd700 !important;
+    font-weight: 700;
+}
+
+/* ==== Top Header ==== */
+.skinHeader {
+    background: rgba(0,0,0,0.8) !important;
+    backdrop-filter: blur(12px);
+}
+.headerButton, .headerButton span.material-icons {
+    color: #d4af37 !important;
+}
+.headerButton:hover span.material-icons {
+    color: #ffd700 !important;
+}
+
+/* ==== Tabs (Home, Favorites, etc.) ==== */
+.emby-tab-button {
+    font-family: 'Cinzel', serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    padding: 8px 18px !important;
+    border-radius: 50px !important;
+    margin: 0 6px !important;
+    background: transparent !important;
+    color: #d4af37 !important;
+    transition: all 0.3s ease;
+    
+}
+.emby-tab-button.emby-tab-button-active {
+    background: rgba(255, 215, 0, 0.15) !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    box-shadow: 0 0 0px rgba(255, 215, 0, 0.3);
+    color: #ffd700 !important;
+}
+
+/* ==== Section Titles ==== */
+.sectionTitle {
+    font-family: 'Cinzel', serif !important;
+    font-weight: 700 !important;
+    font-size: 1.2em !important;
+    color: #d4af37 !important;
+    letter-spacing: 1px;
+    margin: 10px 0 !important;    
+    margin-left: 10px !important;
+    border-left: 3px solid #ffd700;
+    padding-left: 10px;
+}
+
+/* ==== Next Up Button ==== */
+.sectionTitleTextButton {
+    font-family: 'Cinzel', serif !important;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: rgba(255, 215, 0, 0) !important;
+    border: 1px solid rgba(255, 215, 0, 0) !important;
+    color: #ffd700 !important;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.sectionTitleTextButton:hover {
+    background: rgba(255, 215, 0, 0) !important;
+    color: #fff8dc !important;
+}
+
+/* ==== Cards (Movies/Shows) ==== */
+.cardImageContainer, .cardImageContainer::after {
+    border-radius: 15px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cardImageContainer:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.5);
+}
+.cardText {
+    font-family: 'Cinzel', serif !important;
+    color: #e8e6e3 !important;
+}
+.cardOverlayButton {
+    background: rgba(0,0,0,0.7) !important;
+    border: 0px solid #ffd700 !important;
+    border-radius: 50% !important;
+    color: #ffd700 !important;
+    font-size: 0.9em !important;
+    margin-left: 5px;;
+    transition: all 0.2s ease;
+}
+.cardOverlayButton:hover {
+    border:2px solid#ffd700 !important;
+    color: #ffd700 !important;
+}
+
+/* Remove default gray filler behind posters */
+
+.cardPadder {
+    background: transparent !important;
+}
+
+/* Keep hover effect */
+.cardImageContainer:hover {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0px 0 4px rgba(212, 175, 55, 0.5);
+}
+
+
+/* ==== Progress Bars ==== */
+.itemProgressBar {
+    background: rgba(255, 215, 0, 0.12) !important;
+    border-radius: 4px !important;
+    height: 5px !important;
+}
+.itemProgressBarForeground {
+    background: linear-gradient(90deg, #ffd700, #b8860b) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+}
+.innerCardFooter {
+    background: rgba(0,0,0,0.5) !important;
+    border-radius: 0 0 12px 12px;
+}
+
+/* ==== Loading Spinners ==== */
+.progressring-spiner,
+.mdl-spinner__circle {
+    border-color: #ffd700 !important;
+}
+.progressring-text {
+    color: #ffd700 !important;
+}
+
+/* ==== Dialogs ==== */
+.dialog, .formDialog {
+    background: rgba(20,20,20,0.85) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(212,175,55,0.3) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.7) !important;
+}
+
+/* ==== Tooltips ==== */
+.tooltip {
+    background: rgba(0,0,0,0.85) !important;
+    color: #ffd700 !important;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.85em;
+}
+
+/* ==== Scrollbars ==== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(20,20,20,0.7);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffd700, #b8860b);
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #b8860b, #ffd700);
+}
+
+/* ==== Login Page ==== */
 #loginPage {
-  background: url("cinematic_bg.png") center/cover no-repeat fixed !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+    background: url('cinematic_bg.png')!important;
+    backdrop-filter: blur(16px);
+    border-radius: 14px;
+    padding: 20px;
 }
-#loginPage .cardContent, 
-#loginPage .formDialogContent {
-  background: rgba(0,0,0,0.65) !important;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 24px rgba(0,0,0,0.8);
+.manualLoginForm {
+    background: rgba(20,20,20,0.6) !important;
+    border-radius: 12px;
+    padding: 20px;
 }
-#loginPage .cardText {
-  font-size: 1.8em;
-  color: var(--gold-light) !important;
-  text-shadow: 0 0 8px rgba(255,215,0,0.6);
-  text-align: center;
-  font-family: "Cinzel", serif;
+.emby-input {
+    background: rgba(30,30,30,0.8) !important;
+    border: 1px solid rgba(212,175,55,0.5) !important;
+    border-radius: 10px;
+    color: #fff !important;
+    padding: 10px;
 }
-
-/* user avatars */
-#loginPage .card {
-  border-radius: 50% !important;
-  border: 2px solid var(--gold-mid);
-  box-shadow: 0 0 12px rgba(255,215,0,0.3);
-  overflow: hidden;
-  width: 110px !important;
-  height: 110px !important;
-  transition: transform .25s ease, box-shadow .25s ease;
+.emby-input:focus {
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 8px rgba(255,215,0,0.6);
 }
-#loginPage .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 18px rgba(255,215,0,0.6);
+.emby-button{
+    border-radius: 50px;
 }
-
-/* === MOVIE INFO PAGE === */
-.detailPagePrimaryContainer {
-  background: rgba(0,0,0,0.8) !important;
-  border: 1px solid rgba(255,215,0,0.3);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 30px rgba(255,215,0,0.25);
+.button-submit {
+    background: linear-gradient(145deg, #ffd700, #b8860b) !important;
+    color: #111 !important;
+    border-radius: 50px !important;
+    padding: 12px 20px !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: x-large;
 }
-.detailPagePrimaryContainer .itemName {
-  font-family: "Cinzel", serif;
-  font-size: 2.4em !important;
-  font-weight: 900;
-  color: var(--gold-light) !important;
-  text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(255,215,0,0.6), 2px 2px 4px #000;
-}
-.detailPagePrimaryContainer .itemMiscInfo {
-  font-size: 1.1em;
-  color: var(--gold-mid) !important;
-}
-.detailPagePrimaryContainer .overview {
-  font-size: 1.05em;
-  line-height: 1.6;
-  color: var(--gold-light);
-  text-shadow: 0 0 6px rgba(0,0,0,0.8);
-}
-.detailPagePrimaryContainer .tag {
-  background: rgba(255,215,0,0.1) !important;
-  border: 1px solid var(--gold-mid);
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-size: 0.85em;
-  color: var(--gold-light) !important;
+.btnCancel {
+    background: rgba(80,80,80,0.5) !important;
+    color: #eee !important;
+    border-radius: 50px;
 }
 
-/* === ICON BUTTONS ON MOVIE PAGE === */
-.detailPagePrimaryButtons .button-flat,
-.detailPagePrimaryButtons .button-raised {
-  background: linear-gradient(180deg, var(--gold-light), var(--gold-mid)) !important;
-  border-radius: 10px;
-  font-size: 1em;
-  padding: 12px;
-  color: #000 !important;
-  box-shadow: inset 0 2px 3px rgba(255,255,255,0.4),
-              0 0 12px rgba(255,215,0,0.4);
+/* ==== Search Bar ==== */
+.searchField {
+    background: rgba(20,20,20,0.7) !important;
+    border: 1px solid rgba(212,175,55,0.4) !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
+    color: #fff !important;
+    font-family: 'Cinzel', serif !important;
+}
+.searchField:focus {
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 10px rgba(255,215,0,0.7);
+}
+
+/* ==== Movie/Show Detail Pages ==== */
+.detailPageWrapper {
+    background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(5,5,5,1)) !important;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.detailPagePrimaryTitle {
+    font-family: 'Cinzel', serif !important;
+    font-size: 2em !important;
+    font-weight: 700 !important;
+    color: #ffd700 !important;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    margin-bottom: 8px;
+}
+.detailPageSubText {
+    font-family: 'Cinzel', serif !important;
+    font-size: 1em !important;
+    color: #e0c97f !important;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.detailPageSubText .rating {
+    background: rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(255,215,0,0.4);
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin-left: 6px;
+    font-size: 0.9em;
+}
+.detailPageButtons .emby-button {
+    background: rgba(255,215,0,0.15) !important;
+    border: 1px solid rgba(255,215,0,0.4) !important;
+    color: #ffd700 !important;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin: 6px;
+    transition: all 0.2s ease;
+}
+.detailPageButtons .emby-button:hover {
+    background: rgba(255,215,0,0.3) !important;
+    color: #fff !important;
+    box-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+.detailPageButtons .emby-button.play {
+    background: linear-gradient(135deg, #ffd700, #b8860b) !important;
+    color: #111 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+.detailPageButtons .emby-button.play:hover {
+    background: linear-gradient(135deg, #b8860b, #ffd700) !important;
+}
+.detailPageDescription {
+    font-family: 'Cinzel', serif !important;
+    color: #eaeaea !important;
+    font-size: 1em !important;
+    line-height: 1.5em;
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #ffd700;
+    border-radius: 6px;
+}
+.detailPageTags {
+    margin-top: 15px;
+}
+.detailPageTags .tag {
+    display: inline-block;
+    background: rgba(255,215,0,0.15);
+    color: #ffd700 !important;
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.85em;
+    margin: 3px;
+    transition: background 0.2s ease;
+}
+.detailPageTags .tag:hover {
+    background: rgba(255,215,0,0.3);
+    color: #fff !important;
+}
+/* ==== Tabs (Home, Favorites, etc.) ==== */
+@media screen and (min-width: 1024px) { /* only applies on desktop */
+    .emby-tabs {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%); /* center in header */
+        z-index: 50;
+    }
+
+    .emby-tab-button {
+        font-family: 'Cinzel', serif !important;
+        font-weight: 600 !important;
+        text-transform: uppercase;
+        padding: 8px 18px !important;
+        border-radius: 50px !important;
+        margin: 0 6px !important;
+        background: transparent !important;
+        color: #d4af37 !important;
+        transition: all 0.3s ease;
+    }
+
+    .emby-tab-button.emby-tab-button-active {
+        background: rgba(255, 215, 0, 0.15) !important;
+        border: 1px solid rgba(255, 215, 0, 0.4) !important;
+        box-shadow: 0 0 0px rgba(255, 215, 0, 0.3);
+        color: #ffd700 !important;
+    }
 }
