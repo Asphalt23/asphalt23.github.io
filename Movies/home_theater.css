@@ -9,7 +9,7 @@ html, body,
 .page,
 .view,
 .pageContainer {
-    background: url('cinematic_bg.png') center center / cover no-repeat fixed !important;
+    background: url("https://asphalt23.github.io/Movies/cinematic_bg.png") center center / cover no-repeat fixed !important;
     background-color: #000 !important; /* fallback */
 }
 
